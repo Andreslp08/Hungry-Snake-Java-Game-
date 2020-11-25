@@ -12,15 +12,13 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Andres/Documents/Software%20Projects/Desktop%20Projects/JavaNetbeansProjects/SnakeGame/src/Test.java</file>
+            <file>file:/C:/Users/Andres/Documents/Software%20Projects/Desktop%20Projects/JavaNetbeansProjects/SnakeGame/src/game/ui/GameOver.java</file>
             <file>file:/C:/Users/Andres/Documents/Software%20Projects/Desktop%20Projects/JavaNetbeansProjects/SnakeGame/src/game/main/Sprite.java</file>
             <file>file:/C:/Users/Andres/Documents/Software%20Projects/Desktop%20Projects/JavaNetbeansProjects/SnakeGame/src/game/main/GameLevel.java</file>
             <file>file:/C:/Users/Andres/Documents/Software%20Projects/Desktop%20Projects/JavaNetbeansProjects/SnakeGame/src/game/characters/Element.java</file>
             <file>file:/C:/Users/Andres/Documents/Software%20Projects/Desktop%20Projects/JavaNetbeansProjects/SnakeGame/src/game/main/Game.java</file>
-            <file>file:/C:/Users/Andres/Documents/Software%20Projects/Desktop%20Projects/JavaNetbeansProjects/SnakeGame/src/game/characters/RandomObject.java</file>
-            <file>file:/C:/Users/Andres/Documents/Software%20Projects/Desktop%20Projects/JavaNetbeansProjects/SnakeGame/src/game/main/GameManagment.java</file>
+            <file>file:/C:/Users/Andres/Documents/Software%20Projects/Desktop%20Projects/JavaNetbeansProjects/SnakeGame/src/game/ui/GameButton.java</file>
             <file>file:/C:/Users/Andres/Documents/Software%20Projects/Desktop%20Projects/JavaNetbeansProjects/SnakeGame/src/game/characters/Snake.java</file>
-            <file>file:/C:/Users/Andres/Documents/Software%20Projects/Desktop%20Projects/JavaNetbeansProjects/SnakeGame/src/game/main/Delay.java</file>
         </group>
     </open-files>
 </project-private>

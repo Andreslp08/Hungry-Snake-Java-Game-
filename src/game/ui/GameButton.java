@@ -76,9 +76,14 @@ public class GameButton extends JButton implements MouseListener {
     @Override
     public void mouseExited(MouseEvent e) {
         if (getParent().isVisible() == true) {
-            setLocation(getX() + 5, getY() + 5);
+           
             buttonColor = buttonColorExited;
-            setSize(getWidth() - 10, getHeight() - 10);
+            // return to original size
+            if( getWidth() > getPreferredSize().width && getHeight() > getPreferredSize().height){
+                 setLocation(getX() + 5, getY() + 5);
+                setSize(getWidth() - 10, getHeight() - 10);
+            }
+            
         }
     }
 

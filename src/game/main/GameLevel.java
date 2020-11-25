@@ -7,7 +7,10 @@ import game.characters.RandomObject;
 import game.characters.SnakeBodyPart;
 import game.ui.ScreenManagment;
 import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.Image;
+import javax.swing.ImageIcon;
+import sun.swing.BakedArrayList;
 
 public class GameLevel {
 
@@ -33,10 +36,17 @@ public class GameLevel {
     Element elements[][];
 
     public GameLevel(Game game, DifficultyMode difficulty) {
+        background = new ImageIcon(getClass().getResource(backgroundPath[0])).getImage();
         this.game = game;
         this.difficulty = difficulty;
         createCoordenates();
         configLevel();
+    }
+    
+    public void drawBackground(){
+        Graphics2D g = (Graphics2D) game.getBs().getDrawGraphics();
+        g.drawImage(background, 0, 0, ScreenManagment.WIDTH, ScreenManagment.HEIGHT, null);
+        
     }
 
     public void configLevel() {
@@ -79,15 +89,16 @@ public class GameLevel {
     }
 
     public void renderLevel() {
+        drawBackground();
         snake.movement();
-        for (int i = 0; i < SCREEN_HEIGHT / SQUARE_SIZE; i++) {
-            game.getGraphics().drawLine(i * SQUARE_SIZE, 0, i * SQUARE_SIZE, SCREEN_HEIGHT);
-            game.getGraphics().drawLine(0, i * SQUARE_SIZE, SCREEN_WIDTH, i * SQUARE_SIZE);
-        }
+//        for (int i = 0; i < SCREEN_HEIGHT / SQUARE_SIZE; i++) {
+//            game.getGraphics().drawLine(i * SQUARE_SIZE, 0, i * SQUARE_SIZE, SCREEN_HEIGHT);
+//            game.getGraphics().drawLine(0, i * SQUARE_SIZE, SCREEN_WIDTH, i * SQUARE_SIZE);
+//        }
 
         for (int i = 0; i < Element.elementList.size(); i++) {
-            Element.elementList.get(i).draw(game.getBs());
-            Element.elementList.get(i).drawCollisionBounds(game.getBs());
+//            Element.elementList.get(i).draw(game.getBs());
+//            Element.elementList.get(i).drawCollisionBounds(game.getBs());
             if (Element.elementList.get(i).getClass().getSimpleName().equals("RandomObject")) {
                 RandomObject randomObject = (RandomObject) Element.elementList.get(i);
                 randomObject.draw(game.getBs());
@@ -100,7 +111,7 @@ public class GameLevel {
                 snakeBodyPart.draw(game.getBs());
             }
         }
-
     }
+    
 
 }
