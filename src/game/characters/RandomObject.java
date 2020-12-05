@@ -12,6 +12,7 @@ public class RandomObject extends Element {
         super(canvas, x, y, width, height, texturePath);
           // sprites
            sprite = new Sprite();
+           
           
     }
         

@@ -42,11 +42,11 @@ public class GameLevel {
         createCoordenates();
         configLevel();
     }
-    
-    public void drawBackground(){
+
+    public void drawBackground() {
         Graphics2D g = (Graphics2D) game.getBs().getDrawGraphics();
         g.drawImage(background, 0, 0, ScreenManagment.WIDTH, ScreenManagment.HEIGHT, null);
-        
+
     }
 
     public void configLevel() {
@@ -81,11 +81,21 @@ public class GameLevel {
     }
 
     public void createRandomObjects() {
-        for (int i = 0; i < randomObjects.length; i++) {
-            int randomX = (int) (Math.random() * coorX.length);
-            int randomY = (int) (Math.random() * coorY.length);
-            randomObjects[i] = new RandomObject(game.getCanvas(), coorX[randomX], coorY[randomY], SQUARE_SIZE, SQUARE_SIZE, "/game/assets/images/Apple.png");
+        int numRandomO = 0;
+        for (int i = 0; i < Element.elementList.size(); i++) {
+            if (Element.elementList.get(i).getClass().getSimpleName().equals("RandomObject")) {
+                numRandomO++;
+            }
         }
+
+        if (numRandomO == 0) {
+            for (int i = 0; i < randomObjects.length; i++) {
+                int randomX = (int) (Math.random() * coorX.length);
+                int randomY = (int) (Math.random() * coorY.length);
+                randomObjects[i] = new RandomObject(game.getCanvas(), coorX[randomX], coorY[randomY], SQUARE_SIZE, SQUARE_SIZE, "/game/assets/images/Apple.png");
+            }
+        }
+
     }
 
     public void renderLevel() {
@@ -112,6 +122,5 @@ public class GameLevel {
             }
         }
     }
-    
 
 }

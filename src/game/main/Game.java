@@ -73,7 +73,7 @@ public class Game implements Runnable {
                 SnakeBodyPart snakeBodyPart = (SnakeBodyPart) Element.elementList.get(i);
                 for (int o = 0; o < Element.elementList.size(); o++) {
                     if (Element.elementList.get(o).getClass().getSimpleName().equals("RandomObject")) {
-                        Element randomObject = (Element) Element.elementList.get(o);
+                        RandomObject randomObject = (RandomObject) Element.elementList.get(o);
                         if (Collision.basicCollision(snakeBodyPart, randomObject) == true) {
                             Element.elementList.remove(o);
                             gameLevel.createRandomObjects();
