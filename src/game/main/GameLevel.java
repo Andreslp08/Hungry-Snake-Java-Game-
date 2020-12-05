@@ -26,7 +26,7 @@ public class GameLevel {
         "/game/assets/images/background.png"
     };
     private static int SCREEN_WIDTH = ScreenManagment.WIDTH;
-    private static int SCREEN_HEIGHT = ScreenManagment.HEIGHT;
+    private static int SCREEN_HEIGHT = ScreenManagment.HEIGHT-ScreenManagment.HUD_HEIGHT;
     private static int SQUARE_SIZE = 30;
     private static int UNIT_X = SCREEN_WIDTH / SQUARE_SIZE;
     private static int UNIT_Y = SCREEN_HEIGHT / SQUARE_SIZE;

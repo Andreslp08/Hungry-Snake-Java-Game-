@@ -6,7 +6,7 @@
 package game.ui;
 
 public class ScreenManagment {
-    
     public static int WIDTH = 600;
     public static int HEIGHT = 600; 
+    public static int HUD_HEIGHT = 70;
 }

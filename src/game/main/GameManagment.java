@@ -54,7 +54,7 @@ public class GameManagment {
         gameWindow.getLayers().add(gameCanvas, Integer.valueOf(1));
         gameCanvas.setVisible(false);
         gameWindow.getLayers().add(hud, Integer.valueOf(2));
-        hud.setVisible(false);
+        hud.setVisible(true);
         gameWindow.getLayers().add(pauseMenu, Integer.valueOf(3));
         pauseMenu.setVisible(false);
         gameWindow.getLayers().add(gameOver, Integer.valueOf(4));
@@ -106,6 +106,7 @@ public class GameManagment {
                 }
                 Element.elementList.clear();
                 difficultyMode = GameLevel.DifficultyMode.EASY;
+                hud.reset();
                 game = new Game(gameCanvas, difficultyMode);
                 game.init();
 //                hud.setVisible(true);
@@ -124,6 +125,7 @@ public class GameManagment {
                 }
                 Element.elementList.clear();
                  difficultyMode = GameLevel.DifficultyMode.NORMAL;
+                 hud.reset();
                 game = new Game(gameCanvas, difficultyMode);
                 game.init();
 //                hud.setVisible(true);
@@ -142,6 +144,7 @@ public class GameManagment {
                 }
                 Element.elementList.clear();
                difficultyMode = GameLevel.DifficultyMode.HARD;
+               hud.reset();
                 game = new Game(gameCanvas, difficultyMode);
                 game.init();
 //                hud.setVisible(true);
@@ -246,6 +249,7 @@ public class GameManagment {
                 super.mouseReleased(e);
                 gameOver.setVisible(false);
                 Element.elementList.clear();
+                hud.reset();
                 game.stop();
                 game = new Game(gameCanvas, difficultyMode);
                 game.init();

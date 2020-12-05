@@ -9,9 +9,11 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
 
 public class GameCanvas extends Canvas{
+    
+    
         public GameCanvas(){
 
-        this.setBounds(0, 0, ScreenManagment.WIDTH, ScreenManagment.HEIGHT);
+        this.setBounds(0, ScreenManagment.HUD_HEIGHT, ScreenManagment.WIDTH, ScreenManagment.HEIGHT - ScreenManagment.HUD_HEIGHT);
     }
 //        /**
 //    * Crea un AffineTransform y rellena un array de puntos con la función

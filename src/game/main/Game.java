@@ -79,7 +79,7 @@ public class Game implements Runnable {
                             gameLevel.createRandomObjects();
                             gameLevel.snake.enlarge();
                             score++;
-                            System.out.println(score);
+                            GameManagment.hud.updateScore(score);
                         }
                     }
                     if (Element.elementList.get(o).getClass().getSimpleName().equals("SnakeBodyPart")) {
