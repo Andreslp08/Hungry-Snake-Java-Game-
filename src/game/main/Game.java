@@ -89,7 +89,6 @@ public class Game implements Runnable {
                                 gameOver = true;
                                 GameManagment.gameOver.setVisible(true);
                                 isRunning = false;
-                                System.out.println("Game Over!");
                             }
                         }
                     }
