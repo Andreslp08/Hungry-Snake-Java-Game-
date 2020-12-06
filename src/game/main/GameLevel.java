@@ -58,7 +58,7 @@ public class GameLevel {
                 createRandomObjects();
                 break;
             case NORMAL:
-                snake = new Snake(game.getCanvas(), SQUARE_SIZE, coorX, coorY, 3);
+                snake = new Snake(game.getCanvas(), SQUARE_SIZE, coorX, coorY, 4);
                 randomObjects = new RandomObject[1];
                 createRandomObjects();
                 break;
