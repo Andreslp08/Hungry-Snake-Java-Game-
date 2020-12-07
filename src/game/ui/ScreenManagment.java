@@ -9,4 +9,5 @@ public class ScreenManagment {
     public static int WIDTH = 600;
     public static int HEIGHT = 600; 
     public static int HUD_HEIGHT = 70;
+    public static int FPS_REQUIRED = 60;
 }

@@ -19,6 +19,7 @@ public class Menu extends JPanel {
     public Menu() {
         this.setBounds(0, 0, ScreenManagment.WIDTH, ScreenManagment.HEIGHT);
         this.setLayout(new GridBagLayout());
+//        this.setBackground(new Color(200,255,200,255));
         GridBagConstraints constraints = new GridBagConstraints();
         // title
         constraints.insets = new Insets(30, 30, 30, 30);

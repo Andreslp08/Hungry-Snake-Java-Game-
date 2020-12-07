@@ -11,15 +11,13 @@ import javax.swing.JButton;
 
 public class GameButton extends JButton implements MouseListener {
 
-    private Color buttonColorEntered = new Color(45, 45, 45, 255);
-    private Color buttonColorPressed = new Color(20, 20, 20, 255);
-    private Color buttonColorReleased = new Color(45, 45, 45, 255);
-    private Color buttonColorExited = new Color(55, 55, 55, 255);
-    private Color buttonColor = new Color(55, 55, 55, 255);
+    private Color buttonColorEntered = new Color(45, 255, 45, 255);
+    private Color buttonColorPressed = new Color(20, 150, 20, 255);
+    private Color buttonColorReleased = new Color(45, 255, 45, 255);
+    private Color buttonColorExited = new Color(55, 255, 55, 255);
+    private Color buttonColor = new Color(55, 255, 55, 255);
     private Color textColor = new Color(255, 255, 255, 255);
     private int radius = 50;
-
-    ;
 
     public GameButton(String text) {
         this.setText(text);

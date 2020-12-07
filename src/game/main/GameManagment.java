@@ -7,6 +7,7 @@ import game.ui.Difficulty;
 import game.ui.GameButton;
 import game.ui.GameCanvas;
 import game.ui.GameOver;
+import game.ui.SettingsMenu;
 import game.ui.GameWindow;
 import game.ui.Hud;
 import game.ui.LoadGame;
@@ -31,6 +32,7 @@ public class GameManagment {
     public static LoadGame loadGame;
     public static GameWindow gameWindow;
     public static Menu menu;
+    public static SettingsMenu settingsMenu;
     public static Hud hud;
     public static PauseMenu pauseMenu;
     public static GameOver gameOver;
@@ -46,6 +48,7 @@ public class GameManagment {
         loadGame = new LoadGame();
         gameWindow = new GameWindow();
         menu = new Menu();
+        settingsMenu = new SettingsMenu();
         pauseMenu = new PauseMenu();
         gameOver = new GameOver();
         hud = new Hud();
@@ -62,7 +65,9 @@ public class GameManagment {
         gameOver.setVisible(false);
         gameWindow.getLayers().add(difficulty, Integer.valueOf(5));
         difficulty.setVisible(false);
-        gameWindow.getLayers().add(menu, Integer.valueOf(6));
+        gameWindow.getLayers().add(settingsMenu, Integer.valueOf(6));
+        settingsMenu.setVisible(false);
+        gameWindow.getLayers().add(menu, Integer.valueOf(7));
 
         // handlers and controllers
         startGameHandler();
@@ -73,6 +78,7 @@ public class GameManagment {
         closeWindowHandler();
         inputHandlers();
         selectDifficulty();
+        settingsHandler();
     }
 
     public void inputHandlers() {
@@ -156,6 +162,17 @@ public class GameManagment {
 
     }
 
+    
+    public void settingsHandler(){
+        menu.getConfigButton().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                super.mouseReleased(e); 
+                menu.setVisible(false);
+                settingsMenu.setVisible(true);
+            }
+        });
+    }
     public void continueGame() {
         pauseMenu.getContinueButton().addMouseListener(new MouseAdapter() {
             @Override

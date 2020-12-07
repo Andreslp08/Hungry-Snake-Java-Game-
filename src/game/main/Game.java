@@ -7,6 +7,7 @@ import game.characters.Snake.SNAKE_PARTS;
 import game.characters.SnakeBodyPart;
 import game.physics.Collision;
 import game.ui.GameCanvas;
+import game.ui.ScreenManagment;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -104,10 +105,10 @@ public class Game implements Runnable {
         bs.show();
     }
 
+    
     @Override
     public void run() {
-        int fpsRequeried = 60;
-        double tickPerSecond = 1000000000 / fpsRequeried;
+        double tickPerSecond = 1000000000 / ScreenManagment.FPS_REQUIRED;
         double delta = 0;
         long now;
         long lastTime = System.nanoTime();
@@ -129,10 +130,10 @@ public class Game implements Runnable {
             }
             // show fps
             if (now - fpsCounter > 1000000000) {
-                if (fps > fpsRequeried) {
-                    fps = fpsRequeried;
+                if (fps > ScreenManagment.FPS_REQUIRED) {
+                    fps = ScreenManagment.FPS_REQUIRED;
                 }
-                GameManagment.gameWindow.setTitle("Snake Game | FPS: " + fps);
+                GameManagment.gameWindow.setTitle( GameManagment.gameTitle + " | FPS: " + fps);
                 fps = 0;
                 fpsCounter = System.nanoTime();
             }
