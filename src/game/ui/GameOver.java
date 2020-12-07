@@ -1,5 +1,6 @@
 package game.ui;
 
+import game.main.GameManagment;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -23,7 +24,7 @@ public class GameOver extends JPanel {
         constraints.insets = new Insets(10, 10, 10, 10);
         constraints.gridx = 2;
         constraints.gridy = 0;
-        title = new JLabel("Snake Game");
+        title = new JLabel(GameManagment.gameTitle);
         title.setFont(new Font("Arial", 3, 80));
         this.add(title, constraints);
         constraints.gridx = 2;

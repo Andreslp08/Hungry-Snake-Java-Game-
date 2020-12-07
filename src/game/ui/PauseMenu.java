@@ -1,5 +1,6 @@
 package game.ui;
 
+import game.main.GameManagment;
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -20,10 +21,10 @@ public class PauseMenu extends JPanel {
         this.setBounds(0, 0, ScreenManagment.WIDTH, ScreenManagment.HEIGHT);
         this.setLayout(new GridBagLayout());
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.insets = new Insets(50, 50, 50, 50);
+        gridBagConstraints.insets = new Insets(30, 30, 30, 30);
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
-        title = new JLabel("Snake Game");
+        title = new JLabel(GameManagment.gameTitle);
         title.setFont(new Font("Arial", 3, 80));
         this.add(title, gridBagConstraints);
         gridBagConstraints.insets = new Insets(20, 20, 20, 20);

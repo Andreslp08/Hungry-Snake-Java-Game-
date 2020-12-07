@@ -40,6 +40,7 @@ public class GameManagment {
     public static Game game;
     public static Timer timerLoadGame;
     private static final int LOAD_TIME = 1;
+    public static String gameTitle = "Hungry Snake";
 
     public GameManagment() {
         loadGame = new LoadGame();

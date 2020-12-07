@@ -1,5 +1,6 @@
 package game.ui;
 
+import game.main.GameManagment;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -20,10 +21,10 @@ public class Menu extends JPanel {
         this.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         // title
-        constraints.insets = new Insets(50, 50, 50, 50);
+        constraints.insets = new Insets(30, 30, 30, 30);
         constraints.gridx = 2;
         constraints.gridy = 0;
-        title = new JLabel("Snake Game");
+        title = new JLabel(GameManagment.gameTitle);
         title.setFont(new Font("Arial", 3, 80));
         this.add(title, constraints);
         // start button

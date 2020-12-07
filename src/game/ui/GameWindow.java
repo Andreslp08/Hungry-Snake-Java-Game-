@@ -1,5 +1,6 @@
 package game.ui;
 
+import game.main.GameManagment;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Color;
@@ -27,7 +28,7 @@ public class GameWindow extends JFrame {
 //        LayoutManager overlay = new OverlayLayout(layers);
 //        layers.setLayout(overlay);
         this.add(layers);
-        this.setTitle("Snake Game");
+        this.setTitle(GameManagment.gameTitle);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
         this.pack();
