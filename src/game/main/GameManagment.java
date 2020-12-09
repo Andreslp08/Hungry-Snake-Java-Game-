@@ -3,8 +3,9 @@ package game.main;
 import game.characters.Element;
 import game.controller.PauseMenuInputHandler;
 import game.controller.SnakeInputHandler;
+import game.databases.GameDB;
 import game.ui.Difficulty;
-import game.ui.GameButton;
+import game.ui.components.GameButton;
 import game.ui.GameCanvas;
 import game.ui.GameOver;
 import game.ui.SettingsMenu;
@@ -13,6 +14,7 @@ import game.ui.Hud;
 import game.ui.LoadGame;
 import game.ui.Menu;
 import game.ui.PauseMenu;
+import game.ui.ScreenManagment;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -41,10 +43,16 @@ public class GameManagment {
     public static GameCanvas gameCanvas;
     public static Game game;
     public static Timer timerLoadGame;
-    private static final int LOAD_TIME = 1;
+    private static final int LOAD_TIME = 50;
     public static String gameTitle = "Hungry Snake";
 
     public GameManagment() {
+        // load GAME DATABASE SETTINGS
+        GameDB gameDB = new GameDB();
+        gameDB.connect();
+        ScreenManagment.WIDTH = gameDB.getScreenWidth();
+        ScreenManagment.HEIGHT = gameDB.getScreenHeight();
+        ScreenManagment.FPS_REQUIRED = gameDB.getFPS();
         loadGame = new LoadGame();
         gameWindow = new GameWindow();
         menu = new Menu();

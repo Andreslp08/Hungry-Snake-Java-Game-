@@ -1,5 +1,6 @@
 package game.ui;
 
+import game.ui.components.GameButton;
 import game.main.GameManagment;
 import java.awt.AlphaComposite;
 import java.awt.Color;

@@ -45,7 +45,7 @@ public class Element {
         this.collisionWidth = width;
         this.collisionHeight = height;
         this.texturePath = texturePath;
-        this.texture = new ImageIcon(getClass().getResource(texturePath)).getImage();
+        this.texture = new ImageIcon(getClass().getClassLoader().getResource(texturePath)).getImage();
         right = false;
         left = false;
         up = false;
@@ -178,7 +178,7 @@ public class Element {
 
     public void setTexturePath(String texturePath) {
         this.texturePath = texturePath;
-        this.texture = new ImageIcon(getClass().getResource(texturePath)).getImage();
+        this.texture = new ImageIcon(getClass().getClassLoader().getResource(texturePath)).getImage();
     }
 
     public boolean isRight() {

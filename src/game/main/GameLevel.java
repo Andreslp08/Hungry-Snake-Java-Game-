@@ -10,7 +10,6 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import sun.swing.BakedArrayList;
 
 public class GameLevel {
 
@@ -23,11 +22,11 @@ public class GameLevel {
     private static RandomObject randomObjects[];
     private Image background;
     private String[] backgroundPath = {
-        "/game/assets/images/background.png"
+        "game/assets/images/background.png"
     };
     private static int SCREEN_WIDTH = ScreenManagment.WIDTH;
     private static int SCREEN_HEIGHT = ScreenManagment.HEIGHT-ScreenManagment.HUD_HEIGHT;
-    private static int SQUARE_SIZE = 30;
+    private static int SQUARE_SIZE = (ScreenManagment.WIDTH + ScreenManagment.HEIGHT)/50;
     private static int UNIT_X = SCREEN_WIDTH / SQUARE_SIZE;
     private static int UNIT_Y = SCREEN_HEIGHT / SQUARE_SIZE;
     private static int[] coorX = new int[UNIT_X];
@@ -36,7 +35,7 @@ public class GameLevel {
     Element elements[][];
 
     public GameLevel(Game game, DifficultyMode difficulty) {
-        background = new ImageIcon(getClass().getResource(backgroundPath[0])).getImage();
+        background = new ImageIcon(getClass().getClassLoader().getResource(backgroundPath[0])).getImage();
         this.game = game;
         this.difficulty = difficulty;
         createCoordenates();
@@ -92,7 +91,7 @@ public class GameLevel {
             for (int i = 0; i < randomObjects.length; i++) {
                 int randomX = (int) (Math.random() * coorX.length);
                 int randomY = (int) (Math.random() * coorY.length);
-                randomObjects[i] = new RandomObject(game.getCanvas(), coorX[randomX], coorY[randomY], SQUARE_SIZE, SQUARE_SIZE, "/game/assets/images/Apple.png");
+                randomObjects[i] = new RandomObject(game.getCanvas(), coorX[randomX], coorY[randomY], SQUARE_SIZE, SQUARE_SIZE, "game/assets/images/apple.png");
             }
         }
 

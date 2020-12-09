@@ -4,18 +4,20 @@ import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Image;
 import javax.swing.*;
 
 public class LoadGame extends JFrame {
 
     private static int WIDTH = 500;
     private static int HEIGHT = 600;
-    private static JPanel panel;
+    private static JLabel panel;
     private static JLayeredPane loadBarContainer;
     private static JPanel loadBar;
     private static JLabel loadBarPercentage;
     private static int percentage = 0;
     private static int loadBarWidth = 30;
+    private static ImageIcon cover;
 
     public LoadGame() {
         this.setUndecorated(true);
@@ -26,19 +28,24 @@ public class LoadGame extends JFrame {
         this.pack();
         this.setVisible(true);
         this.setLayout(new BorderLayout());
+        //cover
+        cover = new ImageIcon(getClass().getClassLoader().getResource("game/assets/images/cover.png"));
+        Image imageScaled = cover.getImage().getScaledInstance(WIDTH, HEIGHT-loadBarWidth, Image.SCALE_SMOOTH);
+        cover = new ImageIcon(imageScaled);
         //panel
-        panel = new JPanel();
-        panel.setBackground(new Color(20, 20, 20, 255));
+        panel = new JLabel();
+        panel.setBackground(new Color(255, 255, 255, 255));
+        panel.setIcon(cover);
         this.add(panel, BorderLayout.CENTER);
         // bar containr
         loadBarContainer = new JLayeredPane();
         loadBarContainer.setOpaque(true);
-        loadBarContainer.setBackground(new Color(100, 100, 100, 255));
+        loadBarContainer.setBackground(new Color(200, 200, 200, 255));
         loadBarContainer.setPreferredSize(new Dimension(WIDTH, loadBarWidth));
         this.add(loadBarContainer, BorderLayout.SOUTH);
         //loadBar
         loadBar = new JPanel();
-        loadBar.setBackground(new Color(255, 255, 255, 255));
+        loadBar.setBackground(new Color(0, 255, 0, 255));
         loadBar.setSize(WIDTH, 0);
         loadBarContainer.add(loadBar, new Integer(1));
         // loadBar porcentage

@@ -45,11 +45,11 @@ public class Snake {
         this.gridRow = 0;
         this.gridCol = 0;
         bodyParts = new ArrayList();
-        bodyParts.add(new SnakeBodyPart(canvas, coorX[gridRow], coorY[gridCol], size, size, "/game/assets/images/SnakeBody.png", Snake.SNAKE_PARTS.HEAD));
+        bodyParts.add(new SnakeBodyPart(canvas, coorX[gridRow], coorY[gridCol], size, size, "game/assets/images/SnakeBody.png", Snake.SNAKE_PARTS.HEAD));
         this.gridRow++;
-        bodyParts.add(new SnakeBodyPart(canvas, coorX[gridRow], coorY[gridCol], size, size, "/game/assets/images/SnakeBody.png", Snake.SNAKE_PARTS.BODY));
+        bodyParts.add(new SnakeBodyPart(canvas, coorX[gridRow], coorY[gridCol], size, size, "game/assets/images/SnakeBody.png", Snake.SNAKE_PARTS.BODY));
         this.gridRow++;
-        bodyParts.add(new SnakeBodyPart(canvas, coorX[gridRow], coorY[gridCol], size, size, "/game/assets/images/SnakeBody.png", Snake.SNAKE_PARTS.BODY));
+        bodyParts.add(new SnakeBodyPart(canvas, coorX[gridRow], coorY[gridCol], size, size, "game/assets/images/SnakeBody.png", Snake.SNAKE_PARTS.BODY));
         direction = SNAKE_DIRECTION.RIGHT;
         this.speed = speed;
         movementDelay = new Delay();
@@ -96,7 +96,7 @@ public class Snake {
                     }
 
                     removeBodyPart(lastSnakePart);
-                    bodyParts.add(new SnakeBodyPart(canvas, coorX[gridRow], coorY[gridCol], size, size, "/game/assets/images/SnakeBody.png", Snake.SNAKE_PARTS.HEAD));
+                    bodyParts.add(new SnakeBodyPart(canvas, coorX[gridRow], coorY[gridCol], size, size, "game/assets/images/SnakeBody.png", Snake.SNAKE_PARTS.HEAD));
 
                 }
 
@@ -119,22 +119,22 @@ public class Snake {
             if (bodyPart.getSnakePart().equals(SNAKE_PARTS.HEAD)) {
                 switch (direction) {
                     case RIGHT:
-                        bodyPart.setTexturePath("/game/assets/images/SnakeHeadRight.png");
+                        bodyPart.setTexturePath("game/assets/images/SnakeHeadRight.png");
                         break;
                     case LEFT:
-                        bodyPart.setTexturePath("/game/assets/images/SnakeHeadLeft.png");
+                        bodyPart.setTexturePath("game/assets/images/SnakeHeadLeft.png");
                         break;
                     case UP:
-                        bodyPart.setTexturePath("/game/assets/images/SnakeHeadUp.png");
+                        bodyPart.setTexturePath("game/assets/images/SnakeHeadUp.png");
                         break;
                     case DOWN:
-                        bodyPart.setTexturePath("/game/assets/images/SnakeHeadDown.png");
+                        bodyPart.setTexturePath("game/assets/images/SnakeHeadDown.png");
                         break;
 
                 }
 
             } else if (bodyPart.getSnakePart().equals(SNAKE_PARTS.TAIL)) {
-                 bodyPart.setTexturePath("/game/assets/images/SnakeBody.png");
+                 bodyPart.setTexturePath("game/assets/images/SnakeBody.png");
 //                switch (direction) {
 //                    case RIGHT:
 //                        bodyPart.setTexturePath("/game/assets/images/SnakeTailRight.png");
@@ -151,7 +151,7 @@ public class Snake {
 //
 //                }
             } else {
-                bodyPart.setTexturePath("/game/assets/images/SnakeBody.png");
+                bodyPart.setTexturePath("game/assets/images/SnakeBody.png");
             }
 
         }
@@ -163,7 +163,7 @@ public class Snake {
         for (SnakeBodyPart bodyPart : bodyParts) {
             bodyPart.setSnakePart(SNAKE_PARTS.BODY);
         }
-        bodyParts.add(new SnakeBodyPart(canvas, coorX[gridRow], coorY[gridCol], size, size, "/game/assets/images/SnakeBody.png", Snake.SNAKE_PARTS.BODY));
+        bodyParts.add(new SnakeBodyPart(canvas, coorX[gridRow], coorY[gridCol], size, size, "game/assets/images/SnakeBody.png", Snake.SNAKE_PARTS.BODY));
     }
 
     private void removeBodyPart(SnakeBodyPart snakeBodyPart) {
