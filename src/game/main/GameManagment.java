@@ -43,16 +43,26 @@ public class GameManagment {
     public static GameCanvas gameCanvas;
     public static Game game;
     public static Timer timerLoadGame;
-    private static final int LOAD_TIME = 50;
+    private static final int LOAD_TIME = 0;
     public static String gameTitle = "Hungry Snake";
+    public static GameSound test;
+    public static SnakeInputHandler snakeInputHandler;
+    public static PauseMenuInputHandler pauseMenuInputHandler;
+    public GameDB gameDB;
 
     public GameManagment() {
+        test = new GameSound("/game/assets/sounds/test.wav", SoundManagment.SoundType.UI);
+        test.setDefaultVolume(10);
+        test.loop(true);
+        test.start();
         // load GAME DATABASE SETTINGS
-        GameDB gameDB = new GameDB();
+        gameDB = new GameDB();
         gameDB.connect();
         ScreenManagment.WIDTH = gameDB.getScreenWidth();
         ScreenManagment.HEIGHT = gameDB.getScreenHeight();
         ScreenManagment.FPS_REQUIRED = gameDB.getFPS();
+        SoundManagment.GAME_VOLUME = gameDB.getGameVolume();
+        SoundManagment.UI_VOLUME = gameDB.getUIVolume();
         loadGame = new LoadGame();
         gameWindow = new GameWindow();
         menu = new Menu();
@@ -87,15 +97,27 @@ public class GameManagment {
         inputHandlers();
         selectDifficulty();
         settingsHandler();
+
+        // set game volume
+        SoundManagment.updateVolume();
+    }
+
+    public void updateInputHandler() {
+        snakeInputHandler.SNAKE_UP = gameDB.getKey(GameDB.UP_CONTROL_ATTR);
+        snakeInputHandler.SNAKE_DOWN = gameDB.getKey(GameDB.DOWN_CONTROL_ATTR);
+        snakeInputHandler.SNAKE_LEFT = gameDB.getKey(GameDB.LEFT_CONTROL_ATTR);
+        snakeInputHandler.SNAKE_RIGHT = gameDB.getKey(GameDB.RIGHT_CONTROL_ATTR);
+        pauseMenuInputHandler.PAUSE_KEY = gameDB.getKey(GameDB.PAUSE_CONTROL_ATTR);
     }
 
     public void inputHandlers() {
-        SnakeInputHandler snakeInputHandler = new SnakeInputHandler(this);
+        snakeInputHandler = new SnakeInputHandler(this);
         gameWindow.addKeyListener(snakeInputHandler);
         gameCanvas.addKeyListener(snakeInputHandler);
-        PauseMenuInputHandler pauseMenuInputHandler = new PauseMenuInputHandler(this);
+        pauseMenuInputHandler = new PauseMenuInputHandler(this);
         gameWindow.addKeyListener(pauseMenuInputHandler);
         gameCanvas.addKeyListener(pauseMenuInputHandler);
+        updateInputHandler();
     }
 
     public void startGameHandler() {
@@ -139,8 +161,8 @@ public class GameManagment {
                     game.stop();
                 }
                 Element.elementList.clear();
-                 difficultyMode = GameLevel.DifficultyMode.NORMAL;
-                 hud.reset();
+                difficultyMode = GameLevel.DifficultyMode.NORMAL;
+                hud.reset();
                 game = new Game(gameCanvas, difficultyMode);
                 game.init();
 //                hud.setVisible(true);
@@ -158,8 +180,8 @@ public class GameManagment {
                     game.stop();
                 }
                 Element.elementList.clear();
-               difficultyMode = GameLevel.DifficultyMode.HARD;
-               hud.reset();
+                difficultyMode = GameLevel.DifficultyMode.HARD;
+                hud.reset();
                 game = new Game(gameCanvas, difficultyMode);
                 game.init();
 //                hud.setVisible(true);
@@ -170,17 +192,17 @@ public class GameManagment {
 
     }
 
-    
-    public void settingsHandler(){
+    public void settingsHandler() {
         menu.getConfigButton().addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
-                super.mouseReleased(e); 
+                super.mouseReleased(e);
                 menu.setVisible(false);
                 settingsMenu.setVisible(true);
             }
         });
     }
+
     public void continueGame() {
         pauseMenu.getContinueButton().addMouseListener(new MouseAdapter() {
             @Override

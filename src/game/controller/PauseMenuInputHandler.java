@@ -12,7 +12,8 @@ import java.awt.event.KeyListener;
 public class PauseMenuInputHandler implements KeyListener {
 
     public static Canvas canvas;
-    public static int pauseKey = KeyEvent.VK_P;
+    public static int PAUSE_KEY;
+    public static int DEFAULT_PAUSE_KEY = KeyEvent.VK_P;
     private static GameManagment gameManagment;
     public PauseMenuInputHandler( GameManagment gameManagment){
         this.gameManagment = gameManagment;
@@ -25,7 +26,7 @@ public class PauseMenuInputHandler implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if( e.getKeyCode() == pauseKey){
+        if( e.getKeyCode() == PAUSE_KEY){
             gameManagment.pauseGame();
         }
     }

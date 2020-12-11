@@ -36,7 +36,7 @@ public class GameOptionBox extends JPanel {
         // label
         constraints.ipadx = 100;
         titleOptionLabel = new JLabel(this.title);
-        titleOptionLabel.setFont(new Font("Impact", 1, 20));
+        titleOptionLabel.setFont(new Font("Impact", 0, 20));
         titleOptionLabel.setPreferredSize(new Dimension(200,30));
         this.add(titleOptionLabel, constraints);
         // left button
@@ -48,7 +48,7 @@ public class GameOptionBox extends JPanel {
         leftButton.setFocusPainted(false);
         leftButton.setFocusable(false);
         leftButton.setContentAreaFilled(false);
-        leftButton.setFont(new Font("Impact", 1, 30));
+        leftButton.setFont(new Font("Impact", 0, 30));
         this.add(leftButton, constraints);
         // field
         optionField = new JTextField("option");
@@ -65,7 +65,7 @@ public class GameOptionBox extends JPanel {
         rightButton.setFocusPainted(false);
         rightButton.setFocusable(false);
         rightButton.setContentAreaFilled(false);
-        rightButton.setFont(new Font("Impact", 1, 30));
+        rightButton.setFont(new Font("Impact", 0, 30));
         this.add(rightButton, constraints);
         // navigate 
         navigate();

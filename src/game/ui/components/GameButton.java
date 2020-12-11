@@ -1,5 +1,7 @@
 package game.ui.components;
 
+import game.main.GameSound;
+import game.main.SoundManagment;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -18,6 +20,7 @@ public class GameButton extends JButton implements MouseListener {
     private Color buttonColor = new Color(55, 255, 55, 255);
     private Color textColor = new Color(255, 255, 255, 255);
     private int radius = 50;
+    private GameSound clickSound;
 
     public GameButton(String text) {
         this.setText(text);
@@ -28,6 +31,8 @@ public class GameButton extends JButton implements MouseListener {
         this.setContentAreaFilled(false);
         this.setForeground(textColor);
         this.setFont(new Font("Arial", 1, 40));
+        clickSound = new GameSound("/game/assets/sounds/Click.wav", SoundManagment.SoundType.UI);
+        clickSound.setDefaultVolume(50);
     }
 
     @Override
@@ -59,6 +64,8 @@ public class GameButton extends JButton implements MouseListener {
     @Override
     public void mouseReleased(MouseEvent e) {
         buttonColor = buttonColorReleased;
+        clickSound.start();
+        
     }
 
     @Override

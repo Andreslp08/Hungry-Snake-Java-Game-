@@ -1,6 +1,7 @@
 package game.ui;
 
 import game.databases.GameDB;
+import game.main.SoundManagment;
 import game.ui.components.GameButton;
 import game.ui.components.GameOptionBox;
 import java.awt.Color;
@@ -23,26 +24,27 @@ import javax.swing.event.ChangeListener;
 public class SoundSettings extends JPanel {
 
     public static GameButton saveButton;
-    public static JLabel musicLabel, gameLabel;
-    public static JSlider musicSlider, gameSlider;
+    public static JLabel uiLabel, gameLabel;
+    public static JSlider uiSlider, gameSlider;
     public GameDB gameDB;
 
     public SoundSettings() {
+        // this
         this.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.insets = new Insets(10, 10, 10, 10);
         //options
         constraints.weightx = 400;
         constraints.gridy = 0;
-        musicLabel = new JLabel("Music");
-        musicLabel.setFont(new Font("Impact", 0, 20));
-        this.add(musicLabel, constraints);
+        uiLabel = new JLabel("UI");
+        uiLabel.setFont(new Font("Impact", 0, 20));
+        this.add(uiLabel, constraints);
         constraints.gridy = 1;
-        musicSlider = new JSlider(0, 100, 100);
-        musicSlider.setForeground(new Color(0, 255, 0, 255));
-        musicSlider.setMajorTickSpacing(10);
-        musicSlider.setPaintTicks(true);
-        this.add(musicSlider, constraints);
+        uiSlider = new JSlider(0, 100, 100);
+        uiSlider.setForeground(new Color(0, 255, 0, 255));
+        uiSlider.setMajorTickSpacing(10);
+        uiSlider.setPaintTicks(true);
+        this.add(uiSlider, constraints);
         constraints.gridy = 2;
         gameLabel = new JLabel("Game");
         gameLabel.setFont(new Font("Impact", 0, 20));
@@ -62,32 +64,34 @@ public class SoundSettings extends JPanel {
         this.add(saveButton, constraints);
         // connect to database
         gameDB = new GameDB();
-        // load the config
+        gameDB.connect();
         //show current
         showCurrentVolume();
-        // load the changes
-        loadChanges();
-        gameDB.connect();
         // method to save changes
         saveChanges();
 
     }
 
-    public void loadChanges() {
 
-    }
 
     public void showCurrentVolume() {
+        gameLabel.setText("Game: " + SoundManagment.GAME_VOLUME + "%");
+        gameSlider.setValue(SoundManagment.GAME_VOLUME);
+         uiLabel.setText("UI: " + SoundManagment.UI_VOLUME + "%");
+        uiSlider.setValue(SoundManagment.UI_VOLUME);
+        
         gameSlider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
                 gameLabel.setText("Game: " + gameSlider.getValue() + "%");
             }
         });
-        musicSlider.addChangeListener(new ChangeListener() {
+        uiSlider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
-                musicLabel.setText("Music: " + musicSlider.getValue() + "%");
+                uiLabel.setText("UI: " + uiSlider.getValue() + "%");
+                  SoundManagment.UI_VOLUME = uiSlider.getValue();
+                SoundManagment.updateVolume();
             }
         });
 
@@ -98,7 +102,7 @@ public class SoundSettings extends JPanel {
             @Override
             public void mouseReleased(MouseEvent e) {
                 super.mouseReleased(e); //To change body of generated methods, choose Tools | Templates.
-
+                gameDB.updateSoundTable(gameSlider.getValue(), uiSlider.getValue());
             }
 
         });

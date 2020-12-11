@@ -44,9 +44,9 @@ public class ScreenSettings extends JPanel {
         this.add(saveButton, constraints);
         // connect to database
         gameDB = new GameDB();
+         gameDB.connect();
         // load the config
         loadChanges();
-        gameDB.connect();
         // method to save changes
         saveChanges();
     }
