@@ -21,7 +21,8 @@ public class GameDB {
 
     public static final String SCREEN_TABLE = "screen", SCREEN_ID_ATTR = "id", FPS_ATTR = "fps", SCREEN_WIDTH_ATTR = "screen_width", SCREEN_HEIGHT_ATTR = "screen_height",
             SOUND_TABLE = "sound", SOUND_ID_ATTR = "id", GAME_SOUND_ATTR = "game_sound", UI_SOUND_ATTR = "ui_sound",
-            CONTROLS_TABLE = "controls", CONTROLS_ID_ATTR = "id", UP_CONTROL_ATTR = "upControl", DOWN_CONTROL_ATTR = "downControl", LEFT_CONTROL_ATTR = "leftControl", RIGHT_CONTROL_ATTR = "rightControl", PAUSE_CONTROL_ATTR = "pauseControl";
+            CONTROLS_TABLE = "controls", CONTROLS_ID_ATTR = "id", UP_CONTROL_ATTR = "upControl", DOWN_CONTROL_ATTR = "downControl", LEFT_CONTROL_ATTR = "leftControl", RIGHT_CONTROL_ATTR = "rightControl", PAUSE_CONTROL_ATTR = "pauseControl",
+            PLAYERS_TABLE = "players", PLAYERS_ID_ATTR = "id", PLAYER_NICK_ATTR = "player_nick", PLAYER_SCORE_ATTR = "player_score", PLAYER_DIFFICULTY_ATTR = "player_difficulty";
     public static Connection connection;
     public static final String URL = "jdbc:sqlite:databases/game.db";
 
@@ -38,6 +39,7 @@ public class GameDB {
             createScreenTable();
             createSoundTable();
             createControlsTable();
+            createPlayersTable();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -148,6 +150,44 @@ public class GameDB {
         } catch (SQLException ex) {
             System.out.println("Cannot create sound table " + ex);
         }
+ 
+    }
+
+    public void createPlayersTable() {
+        String createTableQuery = "CREATE TABLE IF NOT EXISTS " + PLAYERS_TABLE + " (\n"
+                + PLAYERS_ID_ATTR + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, \n"
+                + PLAYER_NICK_ATTR + " varchar NOT NULL, \n"
+                + PLAYER_SCORE_ATTR + " integer NOT NULL, \n"
+                + PLAYER_DIFFICULTY_ATTR + " varchar NOT NULL \n"
+                + "); ";
+        String isEmptyQuery = "SELECT COUNT(*) AS total FROM " + SOUND_TABLE;
+        String insertDefaultQuery = "INSERT INTO " + SOUND_TABLE + "(" + SOUND_ID_ATTR + "," + GAME_SOUND_ATTR + "," + UI_SOUND_ATTR + ") VALUES(?,?,?)";
+        Statement stmt;
+        try {
+            stmt = connection.createStatement();
+            // create table
+            stmt.execute(createTableQuery);
+            stmt.close();
+        } catch (SQLException ex) {
+            System.out.println("Cannot create sound table " + ex);
+        }
+    }
+    
+    
+    
+       public void savePlayerScore( String name, int score, String difficulty ) {
+        String updateQuery =  "INSERT INTO " + PLAYERS_TABLE+ "(" + PLAYER_NICK_ATTR + "," + PLAYER_SCORE_ATTR + "," + PLAYER_DIFFICULTY_ATTR + ") VALUES(?,?,?)";
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(updateQuery);
+            pstmt.setString(1, name);
+            pstmt.setInt(2, score); 
+            pstmt.setString(3, difficulty);
+            pstmt.executeUpdate();
+            pstmt.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void updateScreenTable(int width, int height, int fps) {
@@ -178,13 +218,13 @@ public class GameDB {
             System.out.println(e.getMessage());
         }
     }
-    
-       public void updateControlsTable(int snakeUp, int snakeDown, int snakeLeft, int snakeRight, int pauseKey) {
-        String updateQuery = "UPDATE " + CONTROLS_TABLE + " SET " 
-                + UP_CONTROL_ATTR + " = ?, " 
-                + DOWN_CONTROL_ATTR + " = ?, " 
-                + LEFT_CONTROL_ATTR + " = ?, " 
-                + RIGHT_CONTROL_ATTR + " = ?, " 
+
+    public void updateControlsTable(int snakeUp, int snakeDown, int snakeLeft, int snakeRight, int pauseKey) {
+        String updateQuery = "UPDATE " + CONTROLS_TABLE + " SET "
+                + UP_CONTROL_ATTR + " = ?, "
+                + DOWN_CONTROL_ATTR + " = ?, "
+                + LEFT_CONTROL_ATTR + " = ?, "
+                + RIGHT_CONTROL_ATTR + " = ?, "
                 + PAUSE_CONTROL_ATTR + " = ? WHERE id = 1";
         try {
             PreparedStatement pstmt = connection.prepareStatement(updateQuery);
@@ -200,6 +240,8 @@ public class GameDB {
             System.out.println(e.getMessage());
         }
     }
+    
+  
 
     public int getScreenWidth() {
         int width = 0;
@@ -271,7 +313,7 @@ public class GameDB {
         return uiVolume;
     }
 
-    public int getKey( String keyAttr ) {
+    public int getKey(String keyAttr) {
         int key = 0;
         String consultQuery = "SELECT " + keyAttr + " FROM " + CONTROLS_TABLE + " WHERE " + CONTROLS_ID_ATTR + " = 1";
         try {
@@ -284,6 +326,5 @@ public class GameDB {
         }
         return key;
     }
-
 
 }

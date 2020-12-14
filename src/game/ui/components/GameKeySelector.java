@@ -57,9 +57,8 @@ public class GameKeySelector extends JPanel {
     public int getKey() {
         return this.key;
     }
-    
-    //--------------------------------------------------------------------
 
+    //--------------------------------------------------------------------
     public class GameButtonKey extends GameButton {
 
         private GameKeyHandler gameKeyHandler;
@@ -77,7 +76,9 @@ public class GameKeySelector extends JPanel {
         public void mouseReleased(MouseEvent e) {
             super.mouseReleased(e);
             setText(ENTER_TEXT);
-            GameManagment.gameWindow.addKeyListener(gameKeyHandler);
+            setFocusable(true);
+            requestFocus();
+            addKeyListener(gameKeyHandler);
 
         }
 
@@ -85,7 +86,6 @@ public class GameKeySelector extends JPanel {
             return gameKeySelector;
         }
 
-        
         //---------------------------------------------------------------------------------------
         public class GameKeyHandler implements KeyListener {
 
@@ -108,9 +108,8 @@ public class GameKeySelector extends JPanel {
             @Override
             public void keyReleased(KeyEvent e) {
                 gameButtonKey.getGameKeySelector().setKey(e.getKeyCode());
-               
                 gameButtonKey.setText(e.getKeyText(e.getKeyCode()));
-                GameManagment.gameWindow.removeKeyListener(this);
+                gameButtonKey.removeKeyListener(this);
             }
 
         }

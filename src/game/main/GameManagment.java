@@ -49,6 +49,7 @@ public class GameManagment {
     public static SnakeInputHandler snakeInputHandler;
     public static PauseMenuInputHandler pauseMenuInputHandler;
     public GameDB gameDB;
+    public static String USER_NICK = "Player01";
 
     public GameManagment() {
         test = new GameSound("/game/assets/sounds/test.wav", SoundManagment.SoundType.UI);

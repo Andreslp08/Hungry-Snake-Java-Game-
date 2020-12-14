@@ -5,6 +5,7 @@ import game.characters.RandomObject;
 import game.characters.Snake;
 import game.characters.Snake.SNAKE_PARTS;
 import game.characters.SnakeBodyPart;
+import game.databases.GameDB;
 import game.physics.Collision;
 import game.ui.GameCanvas;
 import game.ui.ScreenManagment;
@@ -32,11 +33,16 @@ public class Game implements Runnable {
     private GameLevel gameLevel;
     private boolean gameOver = false;
     private int score = 0;
+    private GameDB gameDB;
+    private GameLevel.DifficultyMode difficultyMode;
 
     public Game(GameCanvas canvas, GameLevel.DifficultyMode difficultyMode) {
         this.canvas = canvas;
         gameLevel = new GameLevel(this,difficultyMode);
         score = 0;
+        gameDB = new GameDB();
+        gameDB.connect();
+        this.difficultyMode = difficultyMode;
     }
 
     public synchronized void init() {
@@ -89,6 +95,7 @@ public class Game implements Runnable {
                             if (Collision.basicCollision(snakeBodyPart, snakeBodyPart2) == true && snakeBodyPart.getSnakePart().equals(SNAKE_PARTS.HEAD) && !snakeBodyPart.equals(snakeBodyPart2)) {
                                 gameOver = true;
                                 GameManagment.gameOver.setVisible(true);
+                                gameDB.savePlayerScore(GameManagment.USER_NICK, score, difficultyMode.toString());
                                 isRunning = false;
                             }
                         }
