@@ -32,7 +32,7 @@ public class Snake {
     private static int size;
     private int[] coorX, coorY;
     private int gridRow, gridCol;
-    public static SNAKE_DIRECTION direction, lastDirection;
+    public static SNAKE_DIRECTION direction;
     private Canvas canvas;
     public static int speed;
     private Delay movementDelay;
