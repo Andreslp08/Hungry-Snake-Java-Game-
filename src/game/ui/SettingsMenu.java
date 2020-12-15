@@ -30,6 +30,7 @@ public class SettingsMenu extends JPanel {
     public static final int OPTION_PANEL_HEIGHT = 150;
     public static SoundSettings soundSettings;
     public static ControlsSettings controlsSettings;
+    public static PlayerSettings playerSettings;
 
 
     public SettingsMenu() {
@@ -74,6 +75,9 @@ public class SettingsMenu extends JPanel {
          controlsSettings = new ControlsSettings();
         controlsSettings.setSize(ScreenManagment.WIDTH, ScreenManagment.HEIGHT - OPTION_PANEL_HEIGHT);
         sectionContainer.add(controlsSettings, Integer.valueOf(3));
+        playerSettings = new PlayerSettings();
+        playerSettings.setSize(ScreenManagment.WIDTH, ScreenManagment.HEIGHT - OPTION_PANEL_HEIGHT);
+        sectionContainer.add(playerSettings, Integer.valueOf(4));
         // handler
         returnToMenuHandler();
         openSectionHandler();
@@ -113,7 +117,8 @@ public class SettingsMenu extends JPanel {
             public void mouseReleased(MouseEvent e) {
                 super.mouseReleased(e); //To change body of generated methods, choose Tools | Templates.
                 hideSections();
-
+                playerSettings.setVisible(true);
+                playerSettings.updatePlayerTable();
             }
         });
     }
@@ -122,6 +127,7 @@ public class SettingsMenu extends JPanel {
         screenSettings.setVisible(false);
         soundSettings.setVisible(false);
         controlsSettings.setVisible(false);
+        playerSettings.setVisible(false);
     }
 
     public void returnToMenuHandler() {

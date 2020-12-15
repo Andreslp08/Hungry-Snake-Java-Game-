@@ -150,7 +150,7 @@ public class GameDB {
         } catch (SQLException ex) {
             System.out.println("Cannot create sound table " + ex);
         }
- 
+
     }
 
     public void createPlayersTable() {
@@ -172,15 +172,13 @@ public class GameDB {
             System.out.println("Cannot create sound table " + ex);
         }
     }
-    
-    
-    
-       public void savePlayerScore( String name, int score, String difficulty ) {
-        String updateQuery =  "INSERT INTO " + PLAYERS_TABLE+ "(" + PLAYER_NICK_ATTR + "," + PLAYER_SCORE_ATTR + "," + PLAYER_DIFFICULTY_ATTR + ") VALUES(?,?,?)";
+
+    public void savePlayerScore(String name, int score, String difficulty) {
+        String updateQuery = "INSERT INTO " + PLAYERS_TABLE + "(" + PLAYER_NICK_ATTR + "," + PLAYER_SCORE_ATTR + "," + PLAYER_DIFFICULTY_ATTR + ") VALUES(?,?,?)";
         try {
             PreparedStatement pstmt = connection.prepareStatement(updateQuery);
             pstmt.setString(1, name);
-            pstmt.setInt(2, score); 
+            pstmt.setInt(2, score);
             pstmt.setString(3, difficulty);
             pstmt.executeUpdate();
             pstmt.close();
@@ -240,8 +238,6 @@ public class GameDB {
             System.out.println(e.getMessage());
         }
     }
-    
-  
 
     public int getScreenWidth() {
         int width = 0;
@@ -325,6 +321,43 @@ public class GameDB {
             System.out.println(e.getMessage());
         }
         return key;
+    }
+
+    public int getPlayersCount() {
+        int size = 0;
+        String consultQuery = "SELECT COUNT(*) AS total FROM " + PLAYERS_TABLE;
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(consultQuery);
+            ResultSet result = pstmt.executeQuery();
+            size = result.getInt("total");
+            pstmt.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return size;
+    }
+
+    public String[][] getPlayers() {
+        int size = getPlayersCount();
+        int i = 0;
+        String[][] players = new String[size][4];
+        String consultQuery = "SELECT * FROM " + PLAYERS_TABLE + " ORDER BY " + PLAYER_DIFFICULTY_ATTR + "," + PLAYER_SCORE_ATTR + " DESC";
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(consultQuery);
+            ResultSet result = pstmt.executeQuery();
+            while (result.next()) {
+               
+                players[i][0] = result.getInt(PLAYERS_ID_ATTR) + "";
+                players[i][1] = result.getString(PLAYER_NICK_ATTR) + "";
+                players[i][2] = result.getInt(PLAYER_SCORE_ATTR) + "";
+                players[i][3] = result.getString(PLAYER_DIFFICULTY_ATTR)+"";
+                 i++;
+            }
+            pstmt.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return players;
     }
 
 }

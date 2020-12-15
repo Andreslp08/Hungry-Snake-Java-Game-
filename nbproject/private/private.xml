@@ -14,14 +14,17 @@
         <group>
             <file>file:/C:/Users/Andres/Documents/Software%20Projects/Desktop%20Projects/JavaNetbeansProjects/HungrySnakeGame/src/game/ui/components/GameKeySelector.java</file>
             <file>file:/C:/Users/Andres/Documents/Software%20Projects/Desktop%20Projects/JavaNetbeansProjects/HungrySnakeGame/src/game/controller/SnakeInputHandler.java</file>
+            <file>file:/C:/Users/Andres/Documents/Software%20Projects/Desktop%20Projects/JavaNetbeansProjects/HungrySnakeGame/src/game/ui/SettingsMenu.java</file>
+            <file>file:/C:/Users/Andres/Documents/Software%20Projects/Desktop%20Projects/JavaNetbeansProjects/HungrySnakeGame/src/game/ui/Hud.java</file>
+            <file>file:/C:/Users/Andres/Documents/Software%20Projects/Desktop%20Projects/JavaNetbeansProjects/HungrySnakeGame/src/game/main/GameManagment.java</file>
+            <file>file:/C:/Users/Andres/Documents/Software%20Projects/Desktop%20Projects/JavaNetbeansProjects/HungrySnakeGame/src/game/main/Game.java</file>
+            <file>file:/C:/Users/Andres/Documents/Software%20Projects/Desktop%20Projects/JavaNetbeansProjects/HungrySnakeGame/src/game/databases/GameDB.java</file>
             <file>file:/C:/Users/Andres/Documents/Software%20Projects/Desktop%20Projects/JavaNetbeansProjects/HungrySnakeGame/src/game/controller/PauseMenuInputHandler.java</file>
             <file>file:/C:/Users/Andres/Documents/Software%20Projects/Desktop%20Projects/JavaNetbeansProjects/HungrySnakeGame/src/game/ui/ControlsSettings.java</file>
-            <file>file:/C:/Users/Andres/Documents/Software%20Projects/Desktop%20Projects/JavaNetbeansProjects/HungrySnakeGame/src/game/ui/SettingsMenu.java</file>
-            <file>file:/C:/Users/Andres/Documents/Software%20Projects/Desktop%20Projects/JavaNetbeansProjects/HungrySnakeGame/src/game/main/GameManagment.java</file>
             <file>file:/C:/Users/Andres/Documents/Software%20Projects/Desktop%20Projects/JavaNetbeansProjects/HungrySnakeGame/src/game/ui/components/GameButton.java</file>
             <file>file:/C:/Users/Andres/Documents/Software%20Projects/Desktop%20Projects/JavaNetbeansProjects/HungrySnakeGame/src/game/ui/components/GameOptionBox.java</file>
+            <file>file:/C:/Users/Andres/Documents/Software%20Projects/Desktop%20Projects/JavaNetbeansProjects/HungrySnakeGame/src/game/main/GameLevel.java</file>
             <file>file:/C:/Users/Andres/Documents/Software%20Projects/Desktop%20Projects/JavaNetbeansProjects/HungrySnakeGame/src/game/ui/SoundSettings.java</file>
-            <file>file:/C:/Users/Andres/Documents/Software%20Projects/Desktop%20Projects/JavaNetbeansProjects/HungrySnakeGame/src/game/databases/GameDB.java</file>
         </group>
     </open-files>
 </project-private>

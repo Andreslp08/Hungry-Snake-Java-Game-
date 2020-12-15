@@ -43,6 +43,9 @@ public class Game implements Runnable {
         gameDB = new GameDB();
         gameDB.connect();
         this.difficultyMode = difficultyMode;
+        GameManagment.hud.setPlayerName(GameManagment.USER_NICK);
+        GameManagment.hud.setDifficulty(difficultyMode.toString());
+        
     }
 
     public synchronized void init() {

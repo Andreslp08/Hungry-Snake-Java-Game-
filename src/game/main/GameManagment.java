@@ -53,7 +53,7 @@ public class GameManagment {
 
     public GameManagment() {
         test = new GameSound("/game/assets/sounds/test.wav", SoundManagment.SoundType.UI);
-        test.setDefaultVolume(10);
+        test.setDefaultVolume(0);
         test.loop(true);
         test.start();
         // load GAME DATABASE SETTINGS

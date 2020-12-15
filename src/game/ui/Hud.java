@@ -17,7 +17,8 @@ import javax.swing.*;
 public class Hud extends JPanel {
 
     private int score;
-    private JLabel scoreTitle, scoreLabel, timeTitle, timeLabel, healthTitle, healthLabel;
+    private String difficulty, playerName;
+    private JLabel scoreTitle, scoreLabel, difficultyTitle, difficultyLabel, playerNameTitle, playerNameLabel;
     private JPanel hudContainer;
     
     public Hud() {
@@ -46,35 +47,35 @@ public class Hud extends JPanel {
         scoreLabel.setForeground(new Color(255, 255, 255, 255));
         hudContainer.add(scoreLabel, constraints);
         // time
-        timeTitle = new JLabel();
+        difficultyTitle = new JLabel();
         constraints.gridx = 1;
         constraints.gridy = 0;
-        timeTitle.setText("Time");
-        timeTitle.setFont(new Font("Arial Narrow", 1, 22));
-        timeTitle.setForeground(new Color(255, 255, 255, 255));
-        hudContainer.add(timeTitle, constraints);
-        timeLabel = new JLabel();
+        difficultyTitle.setText("Difficulty");
+        difficultyTitle.setFont(new Font("Arial Narrow", 1, 22));
+        difficultyTitle.setForeground(new Color(255, 255, 255, 255));
+        hudContainer.add(difficultyTitle, constraints);
+        difficultyLabel = new JLabel();
         constraints.gridx = 1;
         constraints.gridy = 1;
-        timeLabel.setText("0");
-        timeLabel.setFont(new Font("Arial Narrow", 0, 20));
-        timeLabel.setForeground(new Color(255, 255, 255, 255));
-        hudContainer.add(timeLabel, constraints);
+        difficultyLabel.setText("0");
+        difficultyLabel.setFont(new Font("Arial Narrow", 0, 20));
+        difficultyLabel.setForeground(new Color(255, 255, 255, 255));
+        hudContainer.add(difficultyLabel, constraints);
         // health
-        healthTitle = new JLabel();
+        playerNameTitle = new JLabel();
         constraints.gridx = 2;
         constraints.gridy = 0;
-        healthTitle.setText("Health");
-        healthTitle.setFont(new Font("Arial Narrow", 1, 22));
-        healthTitle.setForeground(new Color(255, 255, 255, 255));
-        hudContainer.add(healthTitle, constraints);
-        healthLabel = new JLabel();
+        playerNameTitle.setText("Player");
+        playerNameTitle.setFont(new Font("Arial Narrow", 1, 22));
+        playerNameTitle.setForeground(new Color(255, 255, 255, 255));
+        hudContainer.add(playerNameTitle, constraints);
+        playerNameLabel = new JLabel();
         constraints.gridx = 2;
         constraints.gridy = 1;
-        healthLabel.setText("100");
-        healthLabel.setFont(new Font("Arial Narrow", 0, 20));
-        healthLabel.setForeground(new Color(255, 255, 255, 255));
-        hudContainer.add(healthLabel, constraints);
+        playerNameLabel.setText("100");
+        playerNameLabel.setFont(new Font("Arial Narrow", 0, 20));
+        playerNameLabel.setForeground(new Color(255, 255, 255, 255));
+        hudContainer.add(playerNameLabel, constraints);
 
     }
 
@@ -82,6 +83,16 @@ public class Hud extends JPanel {
         this.score = score;
         scoreLabel.setText(score+"");
         
+    }
+    
+    public void setDifficulty( String difficulty ){
+        this.difficulty = difficulty;
+        difficultyLabel.setText(difficulty);
+    }
+    
+    public void setPlayerName( String playerName ){
+        this.playerName = playerName;
+        playerNameLabel.setText(playerName);
     }
     
     public void reset(){
